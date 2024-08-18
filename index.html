@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="shortcut icon" href="./web-ico.png" type="image/x-icon">
+    <style>
+        .body{
+            height: 100vh;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            background: rgb(22,54,119);
+            background: linear-gradient(167deg, rgba(22,54,119,1) 11%, rgba(94,78,31,1) 46%, rgba(27,67,144,0.9654236694677871) 100%);
+        }
+
+        h1{
+            color: rgb(160, 186, 209);
+        }
+
+
+        .body-inner{
+        
+            margin-top: -15%;
+
+        }
+
+
+        
+        .input-group{
+            display: block;
+        }
+
+        .input-group input{
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 20px;
+            background-color: transparent;
+            outline: none;
+            color: #ccc;
+            font-weight: 700;
+        }
+
+        .input-group input:hover, .input-group input:active{
+        background-color: transparent;
+        border: none ;
+        border-bottom: 1px solid #ccc;
+        border-top: none !important;
+            border-right: none !important;
+            outline: none;
+            border-left: none !important;
+        
+        }
+
+        .password-input-container{
+            display: flex;
+            align-items: center;
+            margin-top: 70px;
+        }
+
+        .password-input-container i{
+             color: #ccc;
+             margin-top: -15px;
+             font-size: 18px;
+        }
+
+        .password-input-container button{
+             color: #ccc;
+             background-color: transparent;
+             border: none;
+             cursor: pointer;
+             margin-top: -15px;
+             margin-left: 20px;
+             font-size: 18px;
+        }
+
+        #closePassword{
+            display: none;
+        }
+
+        .strength-level-warning,  
+        .strength-level-danger,
+        .strength-level-success{
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 29px;
+        }
+
+
+        
+        .strength-level-warning{
+            color: rgb(228, 214, 17);
+        }
+        .strength-level-danger{
+            color: rgb(228, 84, 17);
+
+        }
+        .strength-level-success{
+            color: aqua;
+        }
+
+        /* .strengthLevelWarning,
+        .strengthLevelDanger,
+        .strengthLevelSuccess{
+            display: none;
+        } */
+
+        .bi-info-circle{
+            margin-right: 20px;
+        }
+
+        .bi-info-circle:hover ~ .password-info{
+            display: block;
+            transition-timing-function: ease-in-out;
+            transition-duration: 2s;
+        }
+
+
+        .password-info{
+            display: none;
+            position: absolute;
+            transition-duration: 2s;
+            max-width: 350px;
+            background-color: #cccccc49;
+            padding: 10px 10px;
+            border-radius: 15px;
+            right: 25px;
+            top: 25px;
+        }
+
+        .password-info h6{
+            font-size: 16px;
+            font-weight: 600;
+            color: #d48e3d;
+        }
+
+
+        .password-info li{
+            font-weight: 600;
+            color: #ccc;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+
+        .password-info b{
+            color: rgb(127, 231, 127);
+            margin-left: 5px;
+            font-size: 17px;
+        }
+
+
+        .footer{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background: rgba(8, 22, 51, 0.164);
+            color: white;
+            text-align: center;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+
+        .footer a{
+            color: rgb(50, 161, 175);
+            margin: 0 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer a:hover{
+            font-weight: 500;
+            transition: color 0.3s ease;
+            color: rgb(31, 136, 40);
+        }
+    </style>
+</head>
+<body>
+                <div class="body">
+                   <div class="body-inner"> 
+                    <h1>Password Strength Checker</h1>
+                    
+                    <div class="input-group">
+                        <!-- <label for="password">Password</label> -->
+                         <div class="password-input-container">                          
+                            <i class="bi bi-info-circle"></i>
+                            <div class="password-info">
+                             <h6>Strong Password Guidelines:</h6>
+                             <ul>
+                                 <li>At least 12 characters long <b id="characterMark"></b></li>
+                                 <li>Contains at least one uppercase letter <b id="uppercaseMark"></b></li>
+                                 <li>Contains at least one lowercase letter <b id="lowercaseMark"></b></li>
+                                 <li>Contains at least one number <b id="numberMark"></b></li>
+                                 <li>Contains at least one special character (!@#$%^&amp;*) <b id="specialcharacterMark"></b></li>
+                                 <li> Not a word that can be found in a dictionary or the name of a person, character, product, or organization.</li>
+                             </ul>
+                            </div> 
+                        <input type="password" id="passwordInput" placeholder="Enter your password">
+                        <button id="openPassword" ><i class="bi bi-eye-slash-fill"></i> </button> 
+                        <button id="closePassword" > <i class="bi bi-eye-fill"></i> </button> 
+                        <button id="copyclipboard"> <i class="bi bi-clipboard"></i></button>
+                        <button id="copyclipboardcheck"> <i class="bi bi-clipboard-check"></i></button>
+                         </div>
+                        <div class="strength-level-warning" id="strengthLevelWarning"></div>
+                        <div class="strength-level-danger" id="strengthLevelDanger"></div>
+                        <div class="strength-level-success" id="strengthLevelSuccess"></div>
+                    </div>
+                   </div> 
+
+                   <div class="footer">
+                    <p>��  Created by <a target="_blank" href="https://github.com/priest-2105"> Fawaz Bailey</a>. All rights reserved.</p>
+                </div>
+                        
+            </div>   
+<script src="./super.js"></script>
+</body>
+</html>
