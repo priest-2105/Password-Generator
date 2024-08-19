@@ -39,7 +39,8 @@ generatePasswordButton.addEventListener('click', () => {
     }
     
     passwordResult.value = password;
-    console.log(`Generated ${selectedStrength} password: ${password}`);
+    passwordResult.innerHTML = passwordResult.value
+    // console.log(`Generated ${selectedStrength} password: ${password}`);
 });
     
 
@@ -50,7 +51,7 @@ copyclipboard.addEventListener('click', () => {
     const password = document.getElementById('passwordResult').value;
     navigator.clipboard.writeText(password)
        .then(() => {
-            console.log('Password copied to clipboard');
+            // console.log('Password copied to clipboard');
             copyclipboardcheck.style.display = 'block';
             setTimeout(() => {
                 copyclipboardcheck.style.display = 'none';
