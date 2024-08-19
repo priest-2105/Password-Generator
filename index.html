@@ -35,7 +35,7 @@
             display: block;
         }
 
-        .input-group input{
+        .input-group select{
             width: 100%;
             padding: 10px;
             border: none;
@@ -47,7 +47,7 @@
             font-weight: 700;
         }
 
-        .input-group input:hover, .input-group input:active{
+        .input-group select:hover, .input-group select:active{
         background-color: transparent;
         border: none ;
         border-bottom: 1px solid #ccc;
@@ -73,12 +73,42 @@
         .password-input-container button{
              color: #ccc;
              background-color: transparent;
-             border: none;
+             border: 2px solid #ccc;
+             border-radius: 9px;
              cursor: pointer;
              margin-top: -15px;
              margin-left: 20px;
+             font-size: 15px;
+             padding: 10px 20px;
+        }
+
+        .password-input-container button:hover{
+            -webkit-filter: blur(0.8px);
+            filter: blur(0.8px);
+        }
+
+        .password-input-container-two{
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .password-input-container-two i{
+             color: #ccc;
+             margin-top: -15px;
              font-size: 18px;
         }
+
+        .password-input-container-two button{
+             color: #ccc;
+             background-color: transparent;
+             border: none;
+             cursor: pointer;
+             /* margin-top: -15px; */
+             margin-left: 20px;
+             font-size: 18px;
+        }
+
 
         #closePassword{
             display: none;
@@ -191,27 +221,23 @@
                     <div class="input-group">
                         <!-- <label for="password">Password</label> -->
                          <div class="password-input-container">                          
-                            <i class="bi bi-info-circle"></i>
-                            <div class="password-info">
-                             <h6>Strong Password Guidelines:</h6>
-                             <ul>
-                                 <li>At least 12 characters long <b id="characterMark"></b></li>
-                                 <li>Contains at least one uppercase letter <b id="uppercaseMark"></b></li>
-                                 <li>Contains at least one lowercase letter <b id="lowercaseMark"></b></li>
-                                 <li>Contains at least one number <b id="numberMark"></b></li>
-                                 <li>Contains at least one special character (!@#$%^&amp;*) <b id="specialcharacterMark"></b></li>
-                                 <li> Not a word that can be found in a dictionary or the name of a person, character, product, or organization.</li>
-                             </ul>
-                            </div> 
-                        <input type="password" id="passwordInput" placeholder="Enter your password">
-                        <button id="openPassword" ><i class="bi bi-eye-slash-fill"></i> </button> 
+                        <select name="passwordStrength" id="passwordStrength">
+                            <option value="weak">Weak</option>
+                            <option value="normal">Normal</option>
+                            <option value="strong">Strong</option>
+                            <option value="veryStrong">Very Strong</option>
+                        </select>
+                        <button class="generatePassword" id="generatePassword">Generate</button> 
                         <button id="closePassword" > <i class="bi bi-eye-fill"></i> </button> 
-                        <button id="copyclipboard"> <i class="bi bi-clipboard"></i></button>
-                        <button id="copyclipboardcheck"> <i class="bi bi-clipboard-check"></i></button>
                          </div>
-                        <div class="strength-level-warning" id="strengthLevelWarning"></div>
+                         <div class="password-input-container-two">                          
+                            <div class="strength-level-warning" id="strengthLevelWarning">ehcn jhbfrebjfejsbfejrnvejvjr</div>
+                            <button id="copyclipboard"> <i class="bi bi-clipboard"></i></button>
+                            <button id="copyclipboardcheck"> <i class="bi bi-clipboard-check"></i></button>
+                             </div>
+                        <!-- <div class="strength-level-warning" id="strengthLevelWarning"></div>
                         <div class="strength-level-danger" id="strengthLevelDanger"></div>
-                        <div class="strength-level-success" id="strengthLevelSuccess"></div>
+                        <div class="strength-level-success" id="strengthLevelSuccess"></div> -->
                     </div>
                    </div> 
 
